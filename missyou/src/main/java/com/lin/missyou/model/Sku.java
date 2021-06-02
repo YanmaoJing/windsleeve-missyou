@@ -1,12 +1,15 @@
 package com.lin.missyou.model;
 
+import com.lin.missyou.util.ListAndJson;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,7 +27,8 @@ public class Sku extends BaseEntity {
     private Long categoryId;
     private Long rootCategoryId;
 
-    private String  specs;
+    @Convert(converter = ListAndJson.class)
+    private List<Spec> specs;
     private String code;
     private Long stock;
 }
